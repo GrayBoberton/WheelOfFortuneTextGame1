@@ -64,12 +64,12 @@ string category::checkLetter(std::string chosenLetter, std::string chosenPhrase,
 {
 	for (int i = 0; i < chosenPhrase.length(); ++i)
 	{
-		// if the vector contrains this characters index
+		// if the vector contains this characters index
 		if (std::find(foundCharIndexes.begin(), foundCharIndexes.end(), i) != foundCharIndexes.end())
 		{
 			// it has been found
-			std::cout << answer[i] << " "; // so print the char
-			foundCount++; // and add one to the count
+			std::cout << chosenPhrase[i] << " "; // so print the char
+			//foundCount++; // and add one to the count
 		}
 		else
 		{
@@ -77,4 +77,5 @@ string category::checkLetter(std::string chosenLetter, std::string chosenPhrase,
 			std::cout << "_ ";
 		}
 	}
+	return 0;
 }

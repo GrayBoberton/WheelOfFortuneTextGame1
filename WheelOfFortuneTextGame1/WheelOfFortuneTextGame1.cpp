@@ -32,9 +32,11 @@ int main()
 
 	cout << "Welcome to WHEEL OF FORTUNE!" << endl;
 
+	/*
 	cout << "How many people are playing? (1-3) ";
 	int numPlayers = 0;
 	cin >> numPlayers;
+	*/
 
 	Player one;
 	one.money = 0;
@@ -72,6 +74,7 @@ int main()
 
 		while (playerTurn) {
 
+			char playerLetterInput;
 			int playerInput = 0;
 			cout << "1. Spin Wheel\n"
 				<< "2. Buy Vowel\n"
@@ -112,7 +115,9 @@ int main()
 					cout << "You don't have enough money" << endl;
 				}
 				else {
-
+					cout << "Choose a vowel! (A, E, I, O , U)";
+					cin >> playerLetterInput;
+					
 				}
 			}
 		}

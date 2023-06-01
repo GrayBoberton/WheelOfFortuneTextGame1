@@ -69,7 +69,7 @@ string category::checkLetter(std::string chosenLetter, std::string chosenPhrase,
 		{
 			// it has been found
 			std::cout << answer[i] << " "; // so print the char
-			foundCount++; // and add one to the count
+			//foundCount++; // and add one to the count
 		}
 		else
 		{

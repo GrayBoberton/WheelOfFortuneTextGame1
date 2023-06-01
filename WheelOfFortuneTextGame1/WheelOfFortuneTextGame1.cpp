@@ -67,7 +67,11 @@ int main()
 			phrase = cat.pickPhrase(categoryName);
 		}
 		
+		vector<char> foundCharIndexes {};
+		int roundMoney = 0;
+
 		while (playerTurn) {
+
 			int playerInput = 0;
 			cout << "1. Spin Wheel\n"
 				<< "2. Buy Vowel\n"
@@ -89,6 +93,7 @@ int main()
 					wedge = "BANKRUPT";
 					cout << wedge;
 					PlaySound(TEXT("bankrupt.wav"), NULL, SND_FILENAME);
+					roundMoney = 0;
 				}
 				else if (wedge == "LOSE A TURN") {
 					wedge = "LOSE A TURN";
@@ -101,6 +106,14 @@ int main()
 				}
 				Sleep(1000);
 
+			}
+			else if (playerInput == 2) {
+				if (one.money < 250) {
+					cout << "You don't have enough money" << endl;
+				}
+				else {
+
+				}
 			}
 		}
 		

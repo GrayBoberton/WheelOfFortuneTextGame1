@@ -64,7 +64,7 @@ string category::checkIfLetterInPhrase(char chosenLetter, std::string chosenPhra
 {
 	for (int i = 0; i < chosenPhrase.length(); ++i)
 	{
-		// if the vector contrains this characters index
+		// if the vector contains this characters index
 		if (std::find(foundCharIndexes.begin(), foundCharIndexes.end(), i) != foundCharIndexes.end())
 		{
 			// it has been found
@@ -77,6 +77,7 @@ string category::checkIfLetterInPhrase(char chosenLetter, std::string chosenPhra
 			std::cout << "_ ";
 		}
 	}
+	return 0;
 }
 
 void cat::category::validVowel(std::vector<char> foundCharIndexes)

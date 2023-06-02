@@ -39,7 +39,7 @@ int main()
 	*/
 
 	Player one;
-	one.money = 0;
+	one.money = 500;
 	cout << "Please enter a name for your player! ";
 	cin >> one.name;
 
@@ -69,7 +69,7 @@ int main()
 			phrase = cat.pickPhrase(categoryName);
 		}
 		
-		vector<char> foundCharIndexes {};
+		vector<char> foundCharIndexes {'Z'};
 		int roundMoney = 0;
 
 		while (playerTurn) {
@@ -115,9 +115,12 @@ int main()
 					cout << "You don't have enough money" << endl;
 				}
 				else {
-					cout << "Choose a vowel! (A, E, I, O , U)";
+					cout << "Choose a vowel! (A, E, I, O , U) ";
 					cin >> playerLetterInput;
-					
+					cout << playerLetterInput;
+					playerLetterInput = toupper(playerLetterInput);
+					foundCharIndexes.push_back(playerLetterInput);
+					cat.validVowel(foundCharIndexes, playerLetterInput);
 				}
 			}
 		}

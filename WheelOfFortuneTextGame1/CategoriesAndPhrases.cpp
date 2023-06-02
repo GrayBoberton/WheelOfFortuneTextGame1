@@ -60,7 +60,7 @@ string category::pickPhrase(string categoryName) {
 	return chosenPhrase;
 }
 
-string category::checkIfLetterInPhrase(char chosenLetter, std::string chosenPhrase, std::vector<char> foundCharIndexes)
+void category::checkIfLetterInPhrase(char chosenLetter, std::string chosenPhrase, std::vector<char> foundCharIndexes)
 {
 	for (int i = 0; i < chosenPhrase.length(); ++i)
 	{
@@ -77,32 +77,33 @@ string category::checkIfLetterInPhrase(char chosenLetter, std::string chosenPhra
 			std::cout << "_ ";
 		}
 	}
-	return 0;
 }
 
-void cat::category::validVowel(std::vector<char> foundCharIndexes)
+void cat::category::validVowel(std::vector<char> foundCharIndexes, char letter)
 {
-	vector<char> Vowels{'A', 'E', 'I', 'O', 'U'};
+	vector<char> vowels{'A', 'E', 'I', 'O', 'U'};
+	bool valid = false;
 
 	while (true)
 	{
-		for (int i = 0; i < Vowels.size(); ++i)
+		for (int i = 0; i < vowels.size(); i++)
 		{
-			if (std::find(Vowels.begin(), Vowels.end(), i) != foundCharIndexes.end()) {
-				cout << "Please choose a vowel" << endl;
-				foundCharIndexes.erase(foundCharIndexes.end());
-				continue;
-			}
-			else
+			// if the users choice is valid
+			if (letter == vowels[i])
 			{
+				// say we found a valid choice
+				valid = true;
+				// log its index in our vector
+				foundCharIndexes.push_back(i);
 				break;
 			}
 		}
-
+		if (valid == false) {
+			cout << "Please choose a vowel (A, E, I, O, U) ";
+			cin >> letter;
+			continue;
+		}
 	}
-
-
-	
 }
 
 void cat::category::validConsonant(char letter)

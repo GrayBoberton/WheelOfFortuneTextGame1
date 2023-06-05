@@ -79,7 +79,7 @@ void category::checkIfLetterInPhrase(char chosenLetter, std::string chosenPhrase
 	}
 }
 
-void cat::category::validVowel(std::vector<char> foundCharIndexes, char letter)
+char cat::category::validVowel(std::vector<char> foundCharIndexes, char letter)
 {
 	vector<char> vowels{'A', 'E', 'I', 'O', 'U'};
 	bool valid = false;
@@ -105,11 +105,12 @@ void cat::category::validVowel(std::vector<char> foundCharIndexes, char letter)
 			continue;
 		}
 	}
+	return letter;
 }
 
-void cat::category::validConsonant(char letter)
+char cat::category::validConsonant(char letter)
 {
-
+	return 'a';
 }
 
 

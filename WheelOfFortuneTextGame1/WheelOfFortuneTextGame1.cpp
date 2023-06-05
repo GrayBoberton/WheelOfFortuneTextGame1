@@ -54,7 +54,7 @@ int main()
 	
 	while (roundNum <= NUM_ROUNDS) {
 
-		bool playerTurn = true;
+		solved = false;
 
 		categoryName = cat.pickCategory(NUM_CATEGORIES);
 		phrase = cat.pickPhrase(categoryName);
@@ -70,12 +70,10 @@ int main()
 		}
 		
 		vector<char> foundCharIndexes {};
-		vector<char>* foundCharIndexesPtr;
-		foundCharIndexesPtr = &foundCharIndexes;
 
 		int roundMoney = 0;
 
-		while (playerTurn) {
+		while (solved == false) {
 
 			char playerLetterInput;
 			int playerInput = 0;
@@ -87,6 +85,7 @@ int main()
 			cin >> playerInput;
 
 			if (playerInput == 1) {
+				playerInput = 0;
 				system("cls");
 				string wedge = wheel.spinWheel(roundNum);
 
@@ -117,6 +116,7 @@ int main()
 
 			}
 			else if (playerInput == 2) {
+				playerInput = 0;
 				if (one.money < 250) {
 					cout << "You don't have enough money" << endl;
 				}
@@ -125,17 +125,35 @@ int main()
 					cin >> playerLetterInput;
 
 					playerLetterInput = toupper(playerLetterInput);
-					cat.validVowel(foundCharIndexes, playerLetterInput);
-					foundCharIndexes.push_back(playerLetterInput);
+					foundCharIndexes.push_back(cat.validVowel(foundCharIndexes, playerLetterInput));
 					for (int i = 0; i < foundCharIndexes.size(); i++)
 					{
 						cout << foundCharIndexes.at(i) << " ";
 					}
 				}
 			}
+			else if (playerInput == 3) {
+				playerInput = 0;
+				string solveGuess = "";
+				cout << "Please input your guess! ";
+				cin >> solveGuess;
+
+				toupper(solveGuess);
+
+				if (solveGuess == phrase) 
+				{
+					solved = true;
+					roundNum++;
+				}
+				else
+				{
+					cout << "Sorry that is incorrect." << endl;
+					Sleep(5000);
+					//continue;
+				}
+			}
 		}
-		
-		roundNum++;
+		//roundNum++;
 	}
 	
 }

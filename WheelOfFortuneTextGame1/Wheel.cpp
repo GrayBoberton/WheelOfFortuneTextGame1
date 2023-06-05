@@ -12,17 +12,14 @@ const string LOSE_TURN = "LOSE A TURN";
 
 vector<string> wheelWedges{ "2500", "500", "600", "700", "600", "650", "500", "700", BANKRUPT_OR_MILL, "600", "550", "500", "600", BANKRUPT, "650", "500", "700", LOSE_TURN, "800", "500", "650", "500", "900", BANKRUPT };
 
-string wheel::wheel::spinWheel(int roundNum) {
+string wheel::Wheel::spinWheel(int roundNum) {
 	if (roundNum == 1) {
-		//vector<string> wheelWedges{"2500", "500", "600", "700", "600", "650", "500", "700", BANKRUPT_OR_MILL, "600", "550", "500", "600", BANKRUPT, "650", "500", "700", LOSE_TURN, "800", "500", "650", "500", "900", BANKRUPT};
 		wheelWedges[0] = "2500";
 	}
 	else if (roundNum == 2 || roundNum == 3) {
-		//vector<string> wheelWedges{ "3500", "500", "600", "700", "600", "650", "500", "700", BANKRUPT_OR_MILL, "600", "550", "500", "600", BANKRUPT, "650", "500", "700", LOSE_TURN, "800", "500", "650", "500", "900", BANKRUPT };
 		wheelWedges[0] = "3500";
 	}
 	else {
-		//vector<string> wheelWedges{ "5000", "500", "600", "700", "600", "650", "500", "700", BANKRUPT_OR_MILL, "600", "550", "500", "600", BANKRUPT, "650", "500", "700", LOSE_TURN, "800", "500", "650", "500", "900", BANKRUPT };
 		wheelWedges[0] = "5000";
 	}
 
@@ -50,4 +47,9 @@ string wheel::wheel::spinWheel(int roundNum) {
 		cout << chosenWedge << endl;
 	}
 	return chosenWedge;
+}
+
+std::string wheel::Wheel::spinFinalWheel()
+{
+	return std::string();
 }

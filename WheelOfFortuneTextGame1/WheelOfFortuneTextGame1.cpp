@@ -46,7 +46,7 @@ int main()
 	const int NUM_CATEGORIES = 3;
 	category cat;
 
-	wheel::wheel wheel;
+	wheel::Wheel wheel;
 
 	string categoryName = "";
 	string phrase = "";
@@ -69,13 +69,18 @@ int main()
 			phrase = cat.pickPhrase(categoryName);
 		}
 		
-		vector<char> foundCharIndexes {'Z'};
+		vector<char> foundCharIndexes {};
+		vector<char>* foundCharIndexesPtr;
+		foundCharIndexesPtr = &foundCharIndexes;
+
 		int roundMoney = 0;
 
 		while (playerTurn) {
 
 			char playerLetterInput;
 			int playerInput = 0;
+
+			cout << "Money: " << one.money << endl;
 			cout << "1. Spin Wheel\n"
 				<< "2. Buy Vowel\n"
 				<< "3. Solve Puzzle" << endl;
@@ -105,9 +110,10 @@ int main()
 				}
 				else {
 					int wedgeInt = stoi(wedge);
-					cout << wedgeInt;
+					cout << wedgeInt << endl;
 				}
 				Sleep(1000);
+
 
 			}
 			else if (playerInput == 2) {
@@ -117,10 +123,14 @@ int main()
 				else {
 					cout << "Choose a vowel! (A, E, I, O , U) ";
 					cin >> playerLetterInput;
-					cout << playerLetterInput;
+
 					playerLetterInput = toupper(playerLetterInput);
-					foundCharIndexes.push_back(playerLetterInput);
 					cat.validVowel(foundCharIndexes, playerLetterInput);
+					foundCharIndexes.push_back(playerLetterInput);
+					for (int i = 0; i < foundCharIndexes.size(); i++)
+					{
+						cout << foundCharIndexes.at(i) << " ";
+					}
 				}
 			}
 		}

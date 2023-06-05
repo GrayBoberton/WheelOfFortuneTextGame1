@@ -98,6 +98,7 @@ void cat::category::validVowel(std::vector<char> foundCharIndexes, char letter)
 				break;
 			}
 		}
+
 		if (valid == false) {
 			cout << "Please choose a vowel (A, E, I, O, U) ";
 			cin >> letter;

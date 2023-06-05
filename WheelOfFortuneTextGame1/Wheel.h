@@ -3,9 +3,10 @@
 
 namespace wheel
 {
-	class wheel
+	class Wheel
 	{
 	public:
 		 std::string spinWheel(int roundNum);
+		 std::string spinFinalWheel();
 	};
 }

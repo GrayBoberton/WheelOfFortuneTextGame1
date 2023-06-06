@@ -8,6 +8,7 @@
 #include <Windows.h>
 #include <mmsystem.h>
 #include <vector>
+#include <algorithm>
 #pragma comment(lib, "winmm.lib")
 
 using namespace cat;
@@ -19,7 +20,7 @@ bool solved = false;
 struct Player {
 	string name;
 	int money;
-	bool hasMillion = false;
+	bool hasMillion;
 };
 
 int main()
@@ -40,6 +41,7 @@ int main()
 
 	Player one;
 	one.money = 500;
+	one.hasMillion = false;
 	cout << "Please enter a name for your player! ";
 	cin >> one.name;
 
@@ -78,43 +80,58 @@ int main()
 			char playerLetterInput;
 			int playerInput = 0;
 
-			cout << "Money: " << one.money << endl;
-			cout << "1. Spin Wheel\n"
-				<< "2. Buy Vowel\n"
-				<< "3. Solve Puzzle" << endl;
-			cin >> playerInput;
-
-			if (playerInput == 1) {
-				playerInput = 0;
-				system("cls");
-				string wedge = wheel.spinWheel(roundNum);
-
-				system("cls");
-
-				if (wedge == "ONE MILLION") {
-					wedge = "ONE MILLION";
-					cout << wedge << endl << endl;
-					one.hasMillion = true;
-				}
-				else if (wedge == "BANKRUPT") {
-					wedge = "BANKRUPT";
-					cout << wedge;
-					PlaySound(TEXT("bankrupt.wav"), NULL, SND_FILENAME);
-					roundMoney = 0;
-				}
-				else if (wedge == "LOSE A TURN") {
-					wedge = "LOSE A TURN";
-					cout << wedge << endl << endl;
-
-				}
-				else {
-					int wedgeInt = stoi(wedge);
-					cout << wedgeInt << endl;
-				}
-				Sleep(1000);
-
-
+			cout << "Total Money: " << one.money << endl
+				<< "Round Money: " << roundMoney << endl;
+			if (one.hasMillion = true)
+			{
+				cout << "You have the million dollar wedge!" << endl;
 			}
+
+			cout << "Press any key to spin the wheel!" << endl;
+			cin.ignore();
+
+			system("cls");
+			string wedge = wheel.spinWheel(roundNum);
+
+			system("cls");
+
+			if (wedge == "ONE MILLION") {
+				wedge = "ONE MILLION";
+				cout << wedge << endl << endl;
+				one.hasMillion = true;
+			}
+			else if (wedge == "BANKRUPT") {
+				wedge = "BANKRUPT";
+				cout << wedge;
+				PlaySound(TEXT("bankrupt.wav"), NULL, SND_FILENAME);
+				roundMoney = 0;
+				one.hasMillion = false;
+				continue;
+			}
+			else if (wedge == "LOSE A TURN") {
+				wedge = "LOSE A TURN";
+				cout << wedge << endl << endl;
+				continue;
+			}
+			else {
+				int wedgeInt = stoi(wedge);
+				cout << wedgeInt << endl;
+			}
+			Sleep(1000);
+
+			cout << "1. Guess a consonant" << endl
+				<< "2. Buy a vowel" << endl
+				<< "3. Solve the puzzle" << endl;
+
+			if (playerInput == 1)
+			{
+				playerInput = 0;
+				cout << "Choose a consonant! (Not A, E, I, O, U) ";
+				cin >> playerLetterInput;
+
+				playerLetterInput = toupper(playerLetterInput);
+			}
+
 			else if (playerInput == 2) {
 				playerInput = 0;
 				if (one.money < 250) {
@@ -138,17 +155,21 @@ int main()
 				cout << "Please input your guess! ";
 				cin >> solveGuess;
 
-				toupper(solveGuess);
+				std::transform(solveGuess.begin(), solveGuess.end(), solveGuess.begin(), ::toupper);
 
 				if (solveGuess == phrase) 
 				{
+					cout << "You got it!\n"
+						<< "Here's the money you won that round!"
+						<< "$" << roundMoney;
 					solved = true;
 					roundNum++;
 				}
 				else
 				{
 					cout << "Sorry that is incorrect." << endl;
-					Sleep(5000);
+					Sleep(2000);
+					system("cls");
 					//continue;
 				}
 			}

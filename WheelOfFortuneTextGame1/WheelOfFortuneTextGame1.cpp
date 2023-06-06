@@ -82,13 +82,14 @@ int main()
 
 			cout << "Total Money: " << one.money << endl
 				<< "Round Money: " << roundMoney << endl;
-			if (one.hasMillion = true)
+			if (one.hasMillion)
 			{
 				cout << "You have the million dollar wedge!" << endl;
 			}
 
 			cout << "Press any key to spin the wheel!" << endl;
-			cin.ignore();
+			system("pause");
+
 
 			system("cls");
 			string wedge = wheel.spinWheel(roundNum);

@@ -9,8 +9,8 @@ namespace cat
 	public:
 		std::string pickCategory(int numCategories);
 		std::string pickPhrase(std::string categoryName);
-		void checkIfLetterInPhrase(char chosenLetter, std::string chosenPhrase, std::vector<char> foundCharIndexes);
+		void checkIfLetterInPhrase(std::string chosenPhrase, std::vector<char> foundCharIndexes);
 		char validVowel(std::vector<char> foundCharIndexes, char letter);
-		char validConsonant(char letter);
+		char validConsonant(std::vector<char> foundCharIndexes, char letter);
 	};
 }

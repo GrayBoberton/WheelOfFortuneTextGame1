@@ -98,8 +98,10 @@ int main()
 
 			if (wedge == "ONE MILLION") {
 				wedge = "ONE MILLION";
-				cout << wedge << endl << endl;
+				cout << wedge << endl << "YOU GOT THE MILLION DOLLARS\n Keep it until the end of the game for a chance to win big!" << endl;
 				one.hasMillion = true;
+				int wedgeInt = 500;
+				cout << wedgeInt;
 			}
 			else if (wedge == "BANKRUPT") {
 				wedge = "BANKRUPT";
@@ -123,6 +125,8 @@ int main()
 			cout << "1. Guess a consonant" << endl
 				<< "2. Buy a vowel" << endl
 				<< "3. Solve the puzzle" << endl;
+			playerInput = 0;
+			cin >> playerInput;
 
 			if (playerInput == 1)
 			{
@@ -131,8 +135,8 @@ int main()
 				cin >> playerLetterInput;
 
 				playerLetterInput = toupper(playerLetterInput);
+				foundCharIndexes.push_back(cat.validConsonant(foundCharIndexes, playerLetterInput));
 			}
-
 			else if (playerInput == 2) {
 				playerInput = 0;
 				if (one.money < 250) {
@@ -144,11 +148,8 @@ int main()
 
 					playerLetterInput = toupper(playerLetterInput);
 					foundCharIndexes.push_back(cat.validVowel(foundCharIndexes, playerLetterInput));
-					for (int i = 0; i < foundCharIndexes.size(); i++)
-					{
-						cout << foundCharIndexes.at(i) << " ";
-					}
 				}
+
 			}
 			else if (playerInput == 3) {
 				playerInput = 0;

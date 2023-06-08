@@ -2,6 +2,7 @@
 #include <vector>
 #include <iostream>
 #include <algorithm>
+#include <string>
 
 using namespace cat;
 using namespace std;
@@ -62,6 +63,14 @@ string category::pickPhrase(string categoryName) {
 
 void category::checkIfLetterInPhrase(std::string chosenPhrase, std::vector<char> foundCharIndexes)
 {
+
+	const auto test = std::string("test");
+
+	if (test.contains('s'))
+	{
+		// found!
+	}
+
 	for (int i = 0; i < chosenPhrase.length(); ++i)
 	{
 		// if the vector contains this characters index
@@ -84,7 +93,7 @@ char cat::category::validVowel(std::vector<char> foundCharIndexes, char letter)
 	vector<char> vowels{'A', 'E', 'I', 'O', 'U'};
 	bool valid = false;
 
-	while (true)
+	while (valid == false)
 	{
 		for (int i = 0; i < vowels.size(); i++)
 		{
@@ -113,7 +122,7 @@ char cat::category::validConsonant(std::vector<char> foundCharIndexes, char lett
 	vector<char> consonant{'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'};
 	bool valid = false;
 
-	while (true)
+	while (valid == false)
 	{
 		for (int i = 0; i < consonant.size(); i++)
 		{

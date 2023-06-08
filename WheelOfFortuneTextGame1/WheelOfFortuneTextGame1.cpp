@@ -77,8 +77,11 @@ int main()
 
 		while (solved == false) {
 
-			char playerLetterInput;
+			char playerLetterInput = ' ';
 			int playerInput = 0;
+
+			cat.checkIfLetterInPhrase(phrase, foundCharIndexes);
+			cout << endl << endl;
 
 			cout << "Total Money: " << one.money << endl
 				<< "Round Money: " << roundMoney << endl;
@@ -125,17 +128,30 @@ int main()
 			cout << "1. Guess a consonant" << endl
 				<< "2. Buy a vowel" << endl
 				<< "3. Solve the puzzle" << endl;
+
 			playerInput = 0;
-			cin >> playerInput;
+			if (playerInput == 0)
+			{
+				cin >> playerInput;
+			}
 
 			if (playerInput == 1)
 			{
 				playerInput = 0;
 				cout << "Choose a consonant! (Not A, E, I, O, U) ";
+				cout << "Already Guessed: ";
+				for (int i = 0; 9 < foundCharIndexes.size(); i++)
+				{
+					cout << foundCharIndexes.at(i) << ", ";
+				}
+
 				cin >> playerLetterInput;
+				//cout << playerLetterInput;
 
 				playerLetterInput = toupper(playerLetterInput);
+
 				foundCharIndexes.push_back(cat.validConsonant(foundCharIndexes, playerLetterInput));
+				cat.checkIfLetterInPhrase(phrase, foundCharIndexes);
 			}
 			else if (playerInput == 2) {
 				playerInput = 0;
@@ -148,6 +164,7 @@ int main()
 
 					playerLetterInput = toupper(playerLetterInput);
 					foundCharIndexes.push_back(cat.validVowel(foundCharIndexes, playerLetterInput));
+					cat.checkIfLetterInPhrase(phrase, foundCharIndexes);
 				}
 
 			}

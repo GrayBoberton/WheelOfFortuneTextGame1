@@ -66,9 +66,9 @@ void category::checkIfLetterInPhrase(std::string chosenPhrase, std::vector<char>
 
 	const auto test = std::string("test");
 
-	if (test.contains('s'))
+	if (test.find('s'))
 	{
-		// found!
+		cout << "found!";
 	}
 
 	for (int i = 0; i < chosenPhrase.length(); ++i)

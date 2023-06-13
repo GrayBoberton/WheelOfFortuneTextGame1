@@ -90,11 +90,19 @@ int main()
 				cout << "You have the million dollar wedge!" << endl;
 			}
 
-			cout << "Press any key to spin the wheel!" << endl;
-			system("pause");
-
-
-			system("cls");
+			cout << "Press SPACE to spin the wheel!" << endl;
+			bool spacePressed = false;
+			while (!spacePressed)
+			{
+				if (GetAsyncKeyState(VK_SPACE) & 0x8000) {
+					if (!spacePressed) { // Check if space key was not already pressed
+						spacePressed = true; // Mark space key as pressed
+					}
+				}
+				else {
+					spacePressed = false; // Mark space key as not pressed
+				}
+			}
 			string wedge = wheel.spinWheel(roundNum);
 
 			system("cls");
@@ -138,13 +146,13 @@ int main()
 			if (playerInput == 1)
 			{
 				playerInput = 0;
-				cout << "Choose a consonant! (Not A, E, I, O, U) ";
 				cout << "Already Guessed: ";
 				for (int i = 0; 9 < foundCharIndexes.size(); i++)
 				{
 					cout << foundCharIndexes.at(i) << ", ";
 				}
-
+				cout << endl << "Choose a consonant! (Not A, E, I, O, U) ";
+				
 				cin >> playerLetterInput;
 				//cout << playerLetterInput;
 

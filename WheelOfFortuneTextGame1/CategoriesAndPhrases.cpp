@@ -70,7 +70,15 @@ void category::checkIfLetterInPhrase(std::string chosenPhrase, std::vector<char>
 	{
 		cout << "found!";
 	}
-
+	
+	for (int i = 0; i < chosenPhrase.length(); ++i)
+	{
+		for (int j = 0; j < foundCharIndexes.size(); ++j)
+		{
+			
+		}
+	}
+	/*
 	for (int i = 0; i < chosenPhrase.length(); ++i)
 	{
 		// if the vector contains this characters index
@@ -86,6 +94,7 @@ void category::checkIfLetterInPhrase(std::string chosenPhrase, std::vector<char>
 			std::cout << "-";
 		}
 	}
+	*/
 }
 
 char cat::category::validVowel(std::vector<char> foundCharIndexes, char letter)
